@@ -4,6 +4,7 @@ from fractions import Fraction
 class Matrix:
     unknown = ['x', 'y', 'z', 's', 't', 'u', 'w', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 
+
     def __init__(self, list_input: list):
         if not all(isinstance(i, list) for i in list_input):
             raise Exception("All values must be nested in a list")
