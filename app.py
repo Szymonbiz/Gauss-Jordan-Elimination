@@ -8,7 +8,7 @@ class App:
         pass
 
     def mainloop(self):
-        set_ = ['continue calculations']
+        set_ = ['solve system of equation', 'create system of equation']
 
         def display_choice(List):
             i = 1
@@ -31,6 +31,10 @@ class App:
                         if choice == 1:
                             print('\n')
                             self.main()
+                        elif choice == 2:
+                            print('\n')
+                            rows, columns = App.data_entry()
+                            Matrix.display_system_of_equation(Matrix.create_matrix(rows, columns))
                     else:
                         print("\n Invalid option \n")
                 except ValueError:
@@ -38,31 +42,7 @@ class App:
 
     @staticmethod
     def main():
-        message_input = "\033[31mYou must provide a positive integer.\033[0m"
-        while True:
-            try:
-                rows = int(input("Enter the number of equations: "))
-            except ValueError:
-                print(message_input)
-                pass
-            else:
-                if rows > 0:
-                    break
-                else:
-                    print(message_input)
-
-        while True:
-            try:
-                columns = int(input("Enter the number of unknowns: ")) + 1
-            except ValueError:
-                print(message_input)
-                pass
-            else:
-                if columns > 1:
-                    break
-                else:
-                    print(message_input)
-
+        rows, columns = App.data_entry()
         A = Matrix.create_matrix(rows, columns)
         print('\n' * 50)
         Matrix.display_matrix_equation(A)
@@ -128,3 +108,31 @@ class App:
                 l += 1
             else:
                 break
+
+    @staticmethod
+    def data_entry():
+        message_input = "\033[31mYou must provide a positive integer.\033[0m"
+        while True:
+            try:
+                rows = int(input("Enter the number of equations: "))
+            except ValueError:
+                print(message_input)
+                pass
+            else:
+                if rows > 0:
+                    break
+                else:
+                    print(message_input)
+
+        while True:
+            try:
+                columns = int(input("Enter the number of unknowns: ")) + 1
+            except ValueError:
+                print(message_input)
+                pass
+            else:
+                if columns > 1:
+                    break
+                else:
+                    print(message_input)
+        return rows, columns
