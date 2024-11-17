@@ -39,7 +39,6 @@ class Dmr:
     def create_matrix(rows, columns):
         A = []
         for i in range(rows):
-            row_i = "w"
             while True:
                 row_i = input(f"[{columns}] insert data in row {i+1}: ")
                 row_i = row_i.strip(" ")

@@ -43,6 +43,9 @@ class App:
                             result = A*B
                             print("\n")
                             result.display()
+                            if result.cols >= 2 and input("press \"3\" if you want to solve system for this matrix: ") == '3':
+                                App.Gauss_Jordan_Elimination(result)
+
                     else:
                         print("\n Invalid option \n")
                 except ValueError:
