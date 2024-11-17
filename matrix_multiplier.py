@@ -4,7 +4,7 @@ from matrix import Matrix
 import re
 
 
-class Matrix_mul:
+class Dmr:
 
     @staticmethod
     def dimensions_entry(A):

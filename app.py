@@ -1,7 +1,7 @@
 from matrix import Matrix
 from solution_analizer import As
 from gauss_jordan_operations import GaussJordan
-from matrix_multiplier import Matrix_mul
+from matrix_multiplier import Dmr
 
 
 class App:
@@ -34,12 +34,12 @@ class App:
                             self.main()
                         elif choice == 2:
                             print("\n \033[1mA * B\033[0m \n")
-                            rows1, columns1 = Matrix_mul.dimensions_entry("A")
-                            rows2, columns2 = Matrix_mul.dimensions_entry("B")
+                            rows1, columns1 = Dmr.dimensions_entry("A")
+                            rows2, columns2 = Dmr.dimensions_entry("B")
                             print(f"\ninsert data in rows for Matrix A as in example (a b c d ...).")
-                            A = Matrix_mul.create_matrix(rows1, columns1)
+                            A = Dmr.create_matrix(rows1, columns1)
                             print(f"\ninsert data in rows for Matrix B as in example (a b c d ...).")
-                            B = Matrix_mul.create_matrix(rows2, columns2)
+                            B = Dmr.create_matrix(rows2, columns2)
                             result = A*B
                             print("\n")
                             result.display()
