@@ -9,7 +9,7 @@ class App:
         pass
 
     def mainloop(self):
-        set_ = ['solve system of equation', 'multiply Matrix']
+        set_ = ['solve system of equation', 'multiply matrix']
 
         def display_choice(List):
             i = 1
