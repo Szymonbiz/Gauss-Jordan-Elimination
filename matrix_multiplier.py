@@ -1,7 +1,5 @@
 from fractions import Fraction
-
 from matrix import Matrix
-import re
 
 
 class Dmr:
@@ -12,7 +10,7 @@ class Dmr:
         message_input = "\033[31mYou must provide a positive integer.\033[0m"
         while True:
             try:
-                rows = int(input(f"Enter number of colmuns of matrix {A}: "))
+                rows = int(input(f"Enter number of columns of matrix {A}: "))
             except ValueError:
                 print(message_input)
                 pass
