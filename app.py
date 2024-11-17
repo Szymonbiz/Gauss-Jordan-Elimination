@@ -47,6 +47,8 @@ class App:
                         print("\n Invalid option \n")
                 except ValueError:
                     print("\n you must enter an integer \n")
+                except Exception as e:
+                    print(e)
 
     @staticmethod
     def main():

@@ -147,7 +147,7 @@ class Matrix:
 
     def __mul__(self, other):
         if self.cols != other.rows:
-            raise ValueError("You cant multiply Matrices this sizes.")
+            raise Exception("You cant multiply Matrices this sizes.")
         new_matrix = [[sum(self.matrix[i][k] * other.matrix[k][j] for k in range(self.cols)) for j in range(other.cols)]
             for i in range(self.rows)]
         return Matrix(new_matrix)
