@@ -33,13 +33,16 @@ class App:
                             print('\n')
                             self.main()
                         elif choice == 2:
-                            print('\n')
+                            print("\n \033[1mA * B\033[0m \n")
                             rows1, columns1 = Matrix_mul.dimensions_entry("A")
                             rows2, columns2 = Matrix_mul.dimensions_entry("B")
+                            print(f"\ninsert data in rows for Matrix A as in example (a b c d ...).")
                             A = Matrix_mul.create_matrix(rows1, columns1)
+                            print(f"\ninsert data in rows for Matrix B as in example (a b c d ...).")
                             B = Matrix_mul.create_matrix(rows2, columns2)
                             result = A*B
-                            print(result)
+                            print("\n")
+                            result.display()
                     else:
                         print("\n Invalid option \n")
                 except ValueError:

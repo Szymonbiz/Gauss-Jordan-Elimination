@@ -38,21 +38,21 @@ class Matrix_mul:
     @staticmethod
     def create_matrix(rows, columns):
         A = []
-        print("insert data in rows as in example: a b c d ...")
         for i in range(rows):
             row_i = "w"
             while True:
-                row_i = input(f"insert data in row {i}: ")
-                row_i.strip()
+                row_i = input(f"[{columns}] insert data in row {i+1}: ")
+                row_i = row_i.strip(" ")
                 if not all(x in set("./0123456789 -") for x in row_i):
                     print("Invalid input")
                 elif not row_i[0] in set("0123456789-"):
                     print("Invalid input")
                 elif not row_i[-1]  in set("0123456789"):
                     print("Invalid input")
+                elif len(row_i.split(" ")) != columns:
+                    print("Invalid input")
                 else:
                     row_i = row_i.split(" ")
-                    print(row_i)
                     data = [Fraction(x) for x in row_i]
                     A.append(data)
                     break
