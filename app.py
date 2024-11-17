@@ -1,6 +1,7 @@
 from matrix import Matrix
 from solution_analizer import As
 from gauss_jordan_operations import GaussJordan
+from matrix_multiplier import Matrix_mul
 
 
 class App:
@@ -8,7 +9,7 @@ class App:
         pass
 
     def mainloop(self):
-        set_ = ['solve system of equation', 'create system of equation']
+        set_ = ['solve system of equation', 'multiply Matrix']
 
         def display_choice(List):
             i = 1
@@ -33,8 +34,12 @@ class App:
                             self.main()
                         elif choice == 2:
                             print('\n')
-                            rows, columns = App.data_entry()
-                            Matrix.display_system_of_equation(Matrix.create_matrix(rows, columns))
+                            rows1, columns1 = Matrix_mul.dimensions_entry("A")
+                            rows2, columns2 = Matrix_mul.dimensions_entry("B")
+                            A = Matrix_mul.create_matrix(rows1, columns1)
+                            B = Matrix_mul.create_matrix(rows2, columns2)
+                            result = A*B
+                            print(result)
                     else:
                         print("\n Invalid option \n")
                 except ValueError:
