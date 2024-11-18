@@ -2,6 +2,7 @@ from matrix import Matrix
 
 
 class GaussJordan:
+
     """
     Gauss Jordan Operations
     """

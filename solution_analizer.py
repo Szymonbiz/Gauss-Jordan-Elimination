@@ -3,9 +3,14 @@ from fractions import Fraction
 
 
 class As:
+
+    def __init__(self):
+        pass
+
     """
     Solution Analyzer class
     """
+
     @staticmethod
     def deleting_zero_rows(matrix: Matrix):
 

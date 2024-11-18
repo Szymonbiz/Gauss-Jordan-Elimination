@@ -53,9 +53,8 @@ class App:
                 except Exception as e:
                     print(e)
 
-    @staticmethod
-    def main():
-        rows, columns = App.data_entry()
+    def main(self):
+        rows, columns = self.data_entry()
         A = Matrix.create_matrix(rows, columns)
         print('\n' * 50)
         Matrix.display_matrix_equation(A)
@@ -67,7 +66,7 @@ class App:
         print('\n' * 2)
         input('Press any key to continue...')
 
-        App.Gauss_Jordan_Elimination(A)
+        self.Gauss_Jordan_Elimination(A)
 
         Zero_matrix = Matrix(A.matrix.copy())
         As.deleting_zero_rows(A)
