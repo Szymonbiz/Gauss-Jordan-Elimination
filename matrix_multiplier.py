@@ -10,7 +10,7 @@ class Dmr:
         message_input = "\033[31mYou must provide a positive integer.\033[0m"
         while True:
             try:
-                rows = int(input(f"Enter number of columns of matrix {A}: "))
+                rows = int(input(f"Enter number of rows of matrix {A}: "))
             except ValueError:
                 print(message_input)
                 pass
@@ -22,7 +22,7 @@ class Dmr:
 
         while True:
             try:
-                columns = int(input(f"Enter number of rows of matrix {A}: "))
+                columns = int(input(f"Enter number of columns of matrix {A}: "))
             except ValueError:
                 print(message_input)
                 pass
@@ -53,7 +53,9 @@ class Dmr:
                     data = [Fraction(x) for x in row_i]
                     A.append(data)
                     break
+        Matrix(A).display()
         return Matrix(A)
+
 
 
 

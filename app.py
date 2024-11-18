@@ -34,8 +34,8 @@ class App:
                             self.main()
                         elif choice == 2:
                             print("\n \033[1mA * B\033[0m \n")
-                            rows1, columns1 = Dmr.dimensions_entry("A")
-                            rows2, columns2 = Dmr.dimensions_entry("B")
+                            (rows1, columns1) = Dmr.dimensions_entry("A")
+                            (rows2, columns2) = Dmr.dimensions_entry("B")
                             print(f"\ninsert data in rows for Matrix A as in example (a b c d ...).")
                             A = Dmr.create_matrix(rows1, columns1)
                             print(f"\ninsert data in rows for Matrix B as in example (a b c d ...).")
