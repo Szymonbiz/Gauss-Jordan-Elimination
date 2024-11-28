@@ -9,6 +9,8 @@ class App:
         pass
 
     def mainloop(self):
+        print("\033[1mTHIS APP IS MADE TO HELP YOU SOLVE MATRIX EQUATION.\033[0m")
+
         set_ = ['solve system of equation', 'multiply matrices', 'add matrices', 'subtract matrices']
 
         def display_choice(List):
