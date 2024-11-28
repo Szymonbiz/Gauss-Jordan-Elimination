@@ -9,7 +9,7 @@ class App:
         pass
 
     def mainloop(self):
-        set_ = ['solve system of equation', 'multiply matrix']
+        set_ = ['solve system of equation', 'multiply matrices', 'add matrices', 'subtract matrices']
 
         def display_choice(List):
             i = 1
@@ -32,19 +32,19 @@ class App:
                         if choice == 1:
                             print('\n')
                             self.main()
-                        elif choice == 2:
-                            print("\n \033[1mA * B\033[0m \n")
+                        elif choice in [2, 3, 4]:
+                            m = "\n \033[1mA * B\033[0m \n" if choice == 2 else "\n \033[1mA + B\033[0m \n" if choice == 3 else "\n \033[1mA - B\033[0m \n"
+                            print(m)
                             (rows1, columns1) = Dmr.dimensions_entry("A")
                             (rows2, columns2) = Dmr.dimensions_entry("B")
                             print(f"\ninsert data in rows for Matrix A as in example (a b c d ...).")
                             A = Dmr.create_matrix(rows1, columns1)
                             print(f"\ninsert data in rows for Matrix B as in example (a b c d ...).")
                             B = Dmr.create_matrix(rows2, columns2)
-                            result = A*B
+                            result = A*B if choice == 2 else B + A if choice == 3 else A - B
                             print("\n")
                             result.display()
-                            if result.cols >= 2 and input("press \"3\" if you want to solve system for this matrix: ") == '3':
-                                App.Gauss_Jordan_Elimination(result)
+                            App.matrix_loop(result)
 
                     else:
                         print("\n Invalid option \n")
@@ -80,11 +80,70 @@ class App:
                 print('THE SYSTEM OF EQUATIONS IS INCONSISTENT!')
             else:
                 print('\n')
+                # As.display_system_of_equation_after_elimination(A)
                 As.display_system_of_equation_after_elimination(A)
-                As.display_system_of_equation_after_elimination_with_float(A)
+                As.display_system_of_equation_after_elimination(A, float)
         else:
             print("\n" * 4, "The matrix is zero: ")
             Zero_matrix.display(True)
+
+    @staticmethod
+    def matrix_loop(result: Matrix):
+        set_ = ['solve system for this matrix', 'multiply matrix', 'add matrix', 'subtract matrix']
+
+        def display_choice(List):
+            i = 1
+            for n in List:
+                print(i, " - ", n)
+                i += 1
+            x = input("Select option or click enter to exit:")
+            return x
+
+        while True:
+            print("\n")
+            choice = display_choice(set_)
+            if not choice:
+                print("Process finished")
+                break
+            else:
+                try:
+                    choice = int(choice)
+                    if choice in [i for i in range(1, len(set_) + 1)]:
+                        if choice == 1:
+                            App.Gauss_Jordan_Elimination(result)
+                            print('-'*37)
+                            break
+                        elif choice == 2:
+                            print('A:')
+                            result.display()
+                            print("\n \033[1mA * B\033[0m \n")
+                            (rows1, columns1) = Dmr.dimensions_entry("B")
+                            print(f"\ninsert data in rows for Matrix B as in example (a b c d ...).")
+                            B = Dmr.create_matrix(rows1, columns1)
+                            result = result * B
+                            result.display()
+                        elif choice == 3:
+                            print('A:')
+                            result.display()
+                            print("\n \033[1mA + B\033[0m \n")
+                            print(f"\ninsert data in rows for Matrix B as in example (a b c d ...).")
+                            B = Dmr.create_matrix(result.rows, result.cols)
+                            result = result + B
+                            result.display()
+                        elif choice == 4:
+                            print('A:')
+                            result.display()
+                            print("\n \033[1mA - B\033[0m \n")
+                            print(f"\ninsert data in rows for Matrix B as in example (a b c d ...).")
+                            B = Dmr.create_matrix(result.rows, result.cols)
+                            result = result - B
+                            result.display()
+                    else:
+                        print("\n Invalid option \n")
+                except ValueError:
+                    print("\n you must enter an integer \n")
+                except Exception as e:
+                    print(e)
 
     @staticmethod
     def Gauss_Jordan_Elimination(matrix: Matrix):

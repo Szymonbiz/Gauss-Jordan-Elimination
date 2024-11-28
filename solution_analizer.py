@@ -28,41 +28,9 @@ class As:
             else:
                 break
 
-    @staticmethod
-    def display_system_of_equation_after_elimination(obj: Matrix):
-        number_of_coefficients_equal_to_one = 0
-        x = 0
-        print("\nSOLUTION:")
-        equation = ""
-        for a in obj.matrix:
-            y = 0
-            for t in range(len(a) - 1):
-                if obj.matrix[x][y] > 0 and obj.matrix[x][y] != 1:
-                    equation += " +{0}{1}".format(obj.matrix[x][y], Matrix.unknown[y])
-                    y += 1
-                elif obj.matrix[x][y] == 0:
-                    y += 1
-                    pass
-                elif obj.matrix[x][y] == 1:
-                    if number_of_coefficients_equal_to_one == 0:
-                        equation += " {0}".format(Matrix.unknown[y])
-                        number_of_coefficients_equal_to_one += 1
-                        y += 1
-                    else:
-                        equation += " +{0}".format(Matrix.unknown[y])
-                        y += 1
-                else:
-                    equation += " {0}{1}".format(obj.matrix[x][y], Matrix.unknown[y])
-                    y += 1
-            number_of_coefficients_equal_to_one = 0
-
-            equation += " = {0}".format(obj.matrix[x][y])
-            print(equation)
-            equation = ''
-            x += 1
 
     @staticmethod
-    def display_system_of_equation_after_elimination_with_float(obj: Matrix):
+    def display_system_of_equation_after_elimination(obj: Matrix, convert = lambda a: a):
         number_of_coefficients_equal_to_one = 0
         x = 0
         print("ALTERNATIVE SOLUTION:")
@@ -71,7 +39,7 @@ class As:
             y = 0
             for t in range(len(a) - 1):
                 if obj.matrix[x][y] > 0 and obj.matrix[x][y] != 1:
-                    equation += " +{0}{1}".format(float(obj.matrix[x][y]), Matrix.unknown[y])
+                    equation += " +{0}{1}".format(convert(obj.matrix[x][y]), Matrix.unknown[y])
                     y += 1
                 elif obj.matrix[x][y] == 0:
                     y += 1
@@ -85,11 +53,11 @@ class As:
                         equation += " +{0}".format(Matrix.unknown[y])
                         y += 1
                 else:
-                    equation += " {0}{1}".format(float(obj.matrix[x][y]), Matrix.unknown[y])
+                    equation += " {0}{1}".format(convert(obj.matrix[x][y]), Matrix.unknown[y])
                     y += 1
             number_of_coefficients_equal_to_one = 0
 
-            equation += " = {0}".format(float(obj.matrix[x][y]))
+            equation += " = {0}".format(convert(obj.matrix[x][y]))
             print(equation)
             equation = ''
             x += 1
